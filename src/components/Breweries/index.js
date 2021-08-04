@@ -48,9 +48,11 @@ function Breweries() {
             </div>
           </li>
         </Link>
-        <button className="btnn" onClick={() => adFav(brewery)}>
-          <BsFillHeartFill />
-        </button>
+        <center>
+          <button className="btnn" onClick={() => adFav(brewery)}>
+            <BsFillHeartFill />
+          </button>
+        </center>
       </div>
 
       {/* <Details brewery={brewery} /> */}

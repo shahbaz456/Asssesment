@@ -2,7 +2,8 @@
   background-color: white;
   font-size: 27px;
   /* position: absolute; */
-  right: 149px;
-  top: 155px;
+  /* right: 149px; */
+  /* top: 120px; */
   border: none;
+  display: flex;
 }
