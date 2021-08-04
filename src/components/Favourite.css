@@ -1,0 +1,16 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.list-item card {
+  margin-bottom: 25px !important;
+}
+.card {
+  margin-bottom: 25px !important;
+  box-shadow: 1px 1px 5px grey;
+  border-radius: 10px;
+  margin-left: 143px;
+  margin-right: 143px;
+  margin-bottom: 25px;
+}
