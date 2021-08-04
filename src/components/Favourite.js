@@ -1,6 +1,7 @@
 import React from "react";
 import "./Favourite.css";
 
+
 export default function Favourite({ newFav }) {
   return (
     <div>
