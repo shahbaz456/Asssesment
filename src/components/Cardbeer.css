@@ -1,0 +1,21 @@
+.beerclass {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40px;
+  margin: 20px;
+}
+.cardss {
+  display: flex;
+  justify-content: space-between;
+  width: 49%;
+  margin-top: 20px;
+}
+.bodycard {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

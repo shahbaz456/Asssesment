@@ -1,0 +1,9 @@
+.beer {
+  height: 130px;
+}
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 120px;
+}
