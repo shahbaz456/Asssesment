@@ -8,9 +8,14 @@
 }
 .cardss {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 49%;
   margin-top: 20px;
+}
+.card-title {
+  cursor: pointer;
+  text-decoration: underline;
 }
 .bodycard {
   background-color: #f9f9f9;

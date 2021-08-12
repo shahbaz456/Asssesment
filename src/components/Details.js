@@ -1,49 +1,54 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import "./Cardbeer.css";
+import Navigation from "./Navigationbar";
+import { useState, useEffect } from "react";
+import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+const Details = (history) => {
+  const [companyDetails, setCompanyDetails] = useState([]);
 
-const Details = () => {
-  const { state } = useLocation();
+  const getDetails = async () => {
+    console.log("props", history);
+    let company_Id = history.match.params.id;
 
-  // console.log("sdsd", brewery);
-  const breweryAddress =
-    state.beer?.street +
-    ", " +
-    state.beer?.city +
-    ", " +
-    state.beer?.state +
-    " " +
-    state.beer?.postal_code;
-
+    let response = await fetch(
+      `https://api.openbrewerydb.org/breweries/${company_Id}`,
+      {
+        method: "GET",
+      }
+    );
+    const searchresult = await response.json();
+    console.log("Get Details ", searchresult);
+    setCompanyDetails(searchresult);
+  };
+  useEffect(() => {
+    getDetails();
+  }, []);
   return (
-    <div>
-      <div id={"detailsModal_" + state.beer?.id} key={state.beer?.id}>
-        <div role="document">
-          <h5 className="modal-title" id="exampleModalLongTitle">
-            {state.beer?.name}
-          </h5>
-        </div>
-        <div className="modal-body">
-          <p>{state.beer?.brewery_type}</p>
-          <p>
-            <a>{breweryAddress}</a>
-          </p>
-          <p>{state.beer?.phone ? state.beer.phone : <span>None</span>}</p>
-          <p>
-            {state.beer?.website_url ? (
-              <a
-                aria-label="Brewery website"
-                href={state.beer.website_url}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                {state.beer?.website_url}
-              </a>
-            ) : (
-              <span>None</span>
-            )}
-          </p>
-        </div>
-      </div>
+    <div className="details-div">
+      <Navigation />
+      <Card className="card-child-details">
+        <CardBody className="card-child-body-details">
+          <h1>Company Details</h1>
+          <CardTitle tag="h5"> Nick Name: </CardTitle>
+          <CardTitle tag="h5">Name: {companyDetails.name}</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            Brewery Type: {companyDetails.brewery_type}
+          </CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            ID: {companyDetails.id}
+          </CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            {" "}
+            City: {companyDetails.city}
+          </CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            State: {companyDetails.state}
+          </CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            Country: {companyDetails.country}
+          </CardSubtitle>
+        </CardBody>
+      </Card>
     </div>
   );
 };
