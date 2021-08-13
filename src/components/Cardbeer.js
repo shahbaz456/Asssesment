@@ -16,7 +16,7 @@ import Model from "./Model";
 
 import { useHistory } from "react-router";
 
-const Cardbeer = ({ brew, noLike, disableCurrent }) => {
+const Cardbeer = ({ brew, noLike, disableCurrent, savechange }) => {
   const [fav, setfav] = useState([]);
   const [modal, setModal] = useState(false);
   const [edit, setedit] = useState("");
@@ -81,6 +81,7 @@ const Cardbeer = ({ brew, noLike, disableCurrent }) => {
                       >
                         Edit
                       </Button>
+                      <br />
                       <Button
                         color="danger"
                         onClick={() => {
@@ -99,7 +100,7 @@ const Cardbeer = ({ brew, noLike, disableCurrent }) => {
           modal={modal}
           toggle={toggle}
           edit={edit}
-          // handlesave={handlesave}
+          savechange={savechange}
         />
       </div>
     </>

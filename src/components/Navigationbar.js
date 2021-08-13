@@ -59,7 +59,7 @@ const Navigationbar = ({ searchedItem, nosearch }) => {
               <Collapse isOpen={isOpen} navbar>
                 <Nav className="mr-auto" navbar></Nav>
                 <Link to="/favourite">
-                  <NavbarText>
+                  <NavbarText className="fav">
                     <b>Favourites</b>
                   </NavbarText>
                 </Link>

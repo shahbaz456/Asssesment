@@ -9,7 +9,7 @@ import {
   Input,
 } from "reactstrap";
 
-const Model = ({ modal, toggle, edit }) => {
+const Model = ({ modal, toggle, edit, savechange }) => {
   const [nickname, setnickname] = useState(edit?.nick_name || "");
   console.log("modal", edit);
   return (
@@ -34,7 +34,15 @@ const Model = ({ modal, toggle, edit }) => {
           <Input disabled value={edit.country} />
         </ModalBody>
         <ModalFooter>
-          <Button color="primary">Save</Button>{" "}
+          <Button
+            color="primary"
+            onClick={() => {
+              toggle();
+              savechange(edit.id, nickname);
+            }}
+          >
+            Save
+          </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>

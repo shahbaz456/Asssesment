@@ -12,6 +12,17 @@
   width: 100%;
   align-items: center;
 }
+.brand {
+  text-decoration: underline;
+}
+.fav {
+  text-decoration: underline;
+  color: black !important;
+}
 .searchcard {
   display: flex;
+}
+
+.form-control {
+  width: 400px !important;
 }
