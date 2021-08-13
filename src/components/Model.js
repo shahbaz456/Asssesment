@@ -34,9 +34,7 @@ const Model = ({ modal, toggle, edit }) => {
           <Input disabled value={edit.country} />
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Save
-          </Button>{" "}
+          <Button color="primary">Save</Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>

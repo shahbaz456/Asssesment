@@ -23,43 +23,49 @@ const Navigationbar = ({ searchedItem, nosearch }) => {
     <>
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand className="brand" href="/">
-            <b>Beer Pub</b>
-            <img className="imgg" src={beer} alt="imag"></img>
-          </NavbarBrand>
+          <div className="wraping">
+            <div className="logo">
+              <NavbarBrand className="brand" href="/">
+                <b>Beer Pub</b>
+                <img className="imgg" src={beer} alt="imag"></img>
+              </NavbarBrand>
+            </div>
 
-          <div className="input-group mb-0">
-            {!nosearch ? (
-              <>
-                <input
-                  type="text"
-                  value={search}
-                  placeholder="Search Breweries..."
-                  aria-label="Search"
-                  className="form-control"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button
-                  className="btn btn-dark mx-1"
-                  type="button"
-                  id="button-addon1"
-                  data-ripple-color="dark"
-                  onClick={() => searchedItem(search)}
-                >
-                  Search
-                </button>
-              </>
-            ) : null}
+            <div className="searchcard">
+              {!nosearch ? (
+                <>
+                  <input
+                    type="text"
+                    value={search}
+                    placeholder="Search Breweries..."
+                    aria-label="Search"
+                    className="form-control"
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <button
+                    className="btn btn-dark mx-1"
+                    type="button"
+                    id="button-addon1"
+                    data-ripple-color="dark"
+                    onClick={() => searchedItem(search)}
+                  >
+                    Search
+                  </button>
+                </>
+              ) : null}
+            </div>
+            <div className="favourite">
+              <NavbarToggler onClick={toggle} />
+              <Collapse isOpen={isOpen} navbar>
+                <Nav className="mr-auto" navbar></Nav>
+                <Link to="/favourite">
+                  <NavbarText>
+                    <b>Favourites</b>
+                  </NavbarText>
+                </Link>
+              </Collapse>
+            </div>
           </div>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar></Nav>
-            <Link to="/favourite">
-              <NavbarText>
-                <b>Favourites</b>
-              </NavbarText>
-            </Link>
-          </Collapse>
         </Navbar>
       </div>
     </>

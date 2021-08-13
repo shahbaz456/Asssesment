@@ -48,9 +48,13 @@ const Cardbeer = ({ brew, noLike, disableCurrent }) => {
         {brew &&
           brew.map((element, index) => {
             return (
-              <Card className="cardss">
+              <Card className="maincard">
                 <CardBody className="bodycard">
-                  <CardTitle tag="h5" onClick={() => getDetails(element)}>
+                  <CardTitle
+                    tag="h5"
+                    className="details"
+                    onClick={() => getDetails(element)}
+                  >
                     {element.name}
                   </CardTitle>
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
@@ -91,7 +95,12 @@ const Cardbeer = ({ brew, noLike, disableCurrent }) => {
               </Card>
             );
           })}
-        <Model modal={modal} toggle={toggle} edit={edit} />
+        <Model
+          modal={modal}
+          toggle={toggle}
+          edit={edit}
+          // handlesave={handlesave}
+        />
       </div>
     </>
   );

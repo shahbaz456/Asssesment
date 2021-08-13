@@ -28,8 +28,8 @@ const Details = (history) => {
       <Navigation />
       <Card className="card-child-details">
         <CardBody className="card-child-body-details">
-          <h1>Company Details</h1>
-          <CardTitle tag="h5"> Nick Name: </CardTitle>
+          <h2>Company Details</h2>
+
           <CardTitle tag="h5">Name: {companyDetails.name}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             Brewery Type: {companyDetails.brewery_type}
