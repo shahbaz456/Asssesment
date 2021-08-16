@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Modal,
@@ -9,17 +9,24 @@ import {
   Input,
 } from "reactstrap";
 
+import "./Model.css";
+
 const Model = ({ modal, toggle, edit, savechange }) => {
   const [nickname, setnickname] = useState(edit?.nick_name || "");
+
   console.log("modal", edit);
+  useEffect(() => {
+    console.log("chk useeffect");
+    setnickname(edit?.nick_name || "");
+  }, [edit?.nick_name]);
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Breweries Data</ModalHeader>
+        <ModalHeader toggle={toggle}>Breweries Data </ModalHeader>
         <ModalBody>
           <Label>Nick Name:</Label>
           <Input
-            value={nickname}
+            value={nickname || ""}
             onChange={(e) => setnickname(e.target.value)}
           />
           <Label>Name:</Label>
@@ -38,6 +45,7 @@ const Model = ({ modal, toggle, edit, savechange }) => {
             color="primary"
             onClick={() => {
               toggle();
+              setnickname();
               savechange(edit.id, nickname);
             }}
           >

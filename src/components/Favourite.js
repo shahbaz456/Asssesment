@@ -20,35 +20,14 @@ export default function Favourite() {
           item["nick_name"] = nick_name;
         }
       }
+      localStorage.setItem("fav", JSON.stringify(existdata));
       return item;
     });
   };
   return (
     <div>
-      <Navigationbar nosearch={true} />
+      <Navigationbar nosearch={true}></Navigationbar>
       <Cardbeer brew={saveData} savechange={savechange} />
     </div>
-    // <div>
-    //   <h1>Favourites</h1>
-    //   <div>
-    //     {newFav &&
-    //       newFav.map((brewery) => {
-    //         return (
-    //           <li
-    //             className="list-item card"
-    //             key={brewery.id}
-    //             data-target={"#detailsModal_" + brewery.id}
-    //           >
-    //             <div className="list-item">
-    //               <h3>{brewery.name}</h3>
-    //             </div>
-    //             <div className="list-item-title">
-    //               <p className="lead">{brewery.city + ", " + brewery.state}</p>
-    //             </div>
-    //           </li>
-    //         );
-    //       })}
-    //   </div>
-    // </div>
   );
 }

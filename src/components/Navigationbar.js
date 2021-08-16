@@ -11,13 +11,65 @@ import {
 import "./Navigationbar.css";
 
 import beer from "../assets/images/beer.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigationbar = ({ searchedItem, nosearch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState([]);
+  const [searchnick, setsearchnick] = useState([]);
+  const currentPath = useLocation().pathname;
 
   const toggle = () => setIsOpen(!isOpen);
+  const searchrender = () => {
+    if (currentPath.includes("/about")) {
+      return null;
+    }
+    if (!nosearch) {
+      return (
+        <>
+          <input
+            type="text"
+            value={search}
+            placeholder="Search Breweries..."
+            aria-label="Search"
+            className="form-control"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button
+            className="btn btn-dark mx-1"
+            type="button"
+            id="button-addon1"
+            data-ripple-color="dark"
+            onClick={() => searchedItem(search)}
+          >
+            Search
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <input
+            type="text"
+            value={searchnick}
+            placeholder="Search Nickname..."
+            aria-label="Search"
+            className="form-control"
+            onChange={(e) => setsearchnick(e.target.value)}
+          />
+          <button
+            className="btn btn-dark mx-1"
+            type="button"
+            id="button-addon1"
+            data-ripple-color="dark"
+            // onClick={() => searchedItem(searchnick)}
+          >
+            Search
+          </button>{" "}
+        </>
+      );
+    }
+  };
 
   return (
     <>
@@ -31,29 +83,7 @@ const Navigationbar = ({ searchedItem, nosearch }) => {
               </NavbarBrand>
             </div>
 
-            <div className="searchcard">
-              {!nosearch ? (
-                <>
-                  <input
-                    type="text"
-                    value={search}
-                    placeholder="Search Breweries..."
-                    aria-label="Search"
-                    className="form-control"
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <button
-                    className="btn btn-dark mx-1"
-                    type="button"
-                    id="button-addon1"
-                    data-ripple-color="dark"
-                    onClick={() => searchedItem(search)}
-                  >
-                    Search
-                  </button>
-                </>
-              ) : null}
-            </div>
+            <div className="searchcard">{searchrender()}</div>
             <div className="favourite">
               <NavbarToggler onClick={toggle} />
               <Collapse isOpen={isOpen} navbar>

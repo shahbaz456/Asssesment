@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "jquery/dist/jquery.min.js";
 import "popper.js/dist/popper.min.js";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import App from "./App";
 import Favourite from "./components/Favourite";
 import Details from "./components/Details";
@@ -19,7 +19,16 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/favourite" component={Favourite} />
+        <Route
+          exact
+          path="/favourite"
+          component={() => {
+            if (JSON.parse(localStorage.getItem("fav")).length > 0) {
+              return <Favourite />;
+            }
+            return <Redirect to="/" />;
+          }}
+        />
         <Route exact path="/about/:id" component={Details} />
       </Switch>
     </BrowserRouter>

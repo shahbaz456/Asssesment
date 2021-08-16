@@ -17,7 +17,7 @@ import Model from "./Model";
 import { useHistory } from "react-router";
 
 const Cardbeer = ({ brew, noLike, disableCurrent, savechange }) => {
-  const [fav, setfav] = useState([]);
+  const [fav, setfav] = useState(JSON.parse(localStorage.getItem("fav")));
   const [modal, setModal] = useState(false);
   const [edit, setedit] = useState("");
   const toggle = () => setModal(!modal);
@@ -26,7 +26,7 @@ const Cardbeer = ({ brew, noLike, disableCurrent, savechange }) => {
   const adFav = (element, index) => {
     console.log("please chup karao hassam ko", element);
     fav.push(element);
-    setfav([...fav]);
+    // setfav([...fav]);
     localStorage.setItem("fav", JSON.stringify(fav));
     disableCurrent(index);
     toast.success("successfully added to favourite");
@@ -50,29 +50,44 @@ const Cardbeer = ({ brew, noLike, disableCurrent, savechange }) => {
             return (
               <Card className="maincard">
                 <CardBody className="bodycard">
-                  <CardTitle
-                    tag="h5"
-                    className="details"
-                    onClick={() => getDetails(element)}
-                  >
-                    {element.name}
-                  </CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    {element.brewery_type}
-                  </CardSubtitle>
                   <CardText>{element.adress}</CardText>
 
                   {noLike ? (
-                    <Button
-                      disabled={element.disabled}
-                      onClick={() => {
-                        adFav(element, index);
-                      }}
-                    >
-                      Like
-                    </Button>
+                    <>
+                      <CardTitle
+                        tag="h5"
+                        className="details"
+                        onClick={() => getDetails(element)}
+                      >
+                        {element.name}
+                      </CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">
+                        {element.brewery_type}
+                      </CardSubtitle>
+                      <Button
+                        disabled={element.disabled}
+                        onClick={() => {
+                          adFav(element, index);
+                        }}
+                      >
+                        Like
+                      </Button>
+                    </>
                   ) : (
                     <>
+                      <CardTitle tag="h5" className="details">
+                        Nick Name : {element.nick_name}
+                      </CardTitle>
+                      <CardTitle
+                        tag="h5"
+                        className="details"
+                        onClick={() => getDetails(element)}
+                      >
+                        {element.name}
+                      </CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">
+                        {element.brewery_type}
+                      </CardSubtitle>
                       <Button
                         onClick={() => {
                           setedit({ ...element });

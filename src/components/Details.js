@@ -25,13 +25,11 @@ const Details = (history) => {
   }, []);
   return (
     <div className="details-div">
-      <Navigation />
+      <Navigation nosearch={true} />
       <Card className="card-child-details">
         <CardBody className="card-child-body-details">
           <h2>Company Details</h2>
-          <CardTitle tag="h5">
-            <b>Nick Name:</b>{" "}
-          </CardTitle>
+
           <CardTitle tag="h5">Name: {companyDetails.name}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             Brewery Type: {companyDetails.brewery_type}
