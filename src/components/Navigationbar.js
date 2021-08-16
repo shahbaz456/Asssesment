@@ -13,13 +13,26 @@ import "./Navigationbar.css";
 import beer from "../assets/images/beer.png";
 import { Link, useLocation } from "react-router-dom";
 
-const Navigationbar = ({ searchedItem, nosearch }) => {
+const Navigationbar = ({ searchedItem, nosearch, setsaveData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState([]);
-  const [searchnick, setsearchnick] = useState([]);
+  // const [searchnick, setsearchnick] = useState([]);
   const currentPath = useLocation().pathname;
 
   const toggle = () => setIsOpen(!isOpen);
+
+  let nicksearch = JSON.parse(localStorage.getItem("fav"));
+  console.log("nick search ");
+  const handlenick = (value) => {
+    console.log("value", value);
+    const result = nicksearch.filter((item) => {
+      if (item?.nick_name) {
+        if (item.nick_name.includes(value)) return item;
+      }
+    });
+    setsaveData([...result]);
+  };
+
   const searchrender = () => {
     if (currentPath.includes("/about")) {
       return null;
@@ -51,21 +64,20 @@ const Navigationbar = ({ searchedItem, nosearch }) => {
         <>
           <input
             type="text"
-            value={searchnick}
             placeholder="Search Nickname..."
             aria-label="Search"
             className="form-control"
-            onChange={(e) => setsearchnick(e.target.value)}
+            onChange={(e) => handlenick(e.target.value)}
           />
-          <button
+          {/* <button
             className="btn btn-dark mx-1"
             type="button"
             id="button-addon1"
             data-ripple-color="dark"
-            // onClick={() => searchedItem(searchnick)}
+            onClick={() => searchnick(searchnick)}
           >
             Search
-          </button>{" "}
+          </button>{" "} */}
         </>
       );
     }

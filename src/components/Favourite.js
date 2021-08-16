@@ -8,6 +8,8 @@ export default function Favourite() {
   const [saveData, setsaveData] = useState(
     JSON.parse(localStorage.getItem("fav"))
   );
+  // const [nicksearch, setnicksearch] = useState([]);
+
   const savechange = (id, nick_name) => {
     console.log("please shw msg");
     let existdata = [...saveData];
@@ -24,9 +26,10 @@ export default function Favourite() {
       return item;
     });
   };
+
   return (
     <div>
-      <Navigationbar nosearch={true}></Navigationbar>
+      <Navigationbar nosearch={true} setsaveData={setsaveData} />
       <Cardbeer brew={saveData} savechange={savechange} />
     </div>
   );
