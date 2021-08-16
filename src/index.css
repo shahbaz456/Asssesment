@@ -27,8 +27,8 @@ input {
 .results-container {
   box-shadow: 1px 1px 5px grey;
   border-radius: 10px;
-  margin-left: 143px;
-  margin-right: 143px;
+  /* margin-left: 143px; */
+  /* margin-right: 143px; */
   margin-bottom: 25px;
 }
 .results-container:hover {

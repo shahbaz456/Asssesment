@@ -6,8 +6,14 @@
   padding: 40px !important;
   margin-top: 20px !important;
 }
+
 .maincard {
+  margin-bottom: 25px !important;
+  box-shadow: 1px 1px 5px grey;
+  border-radius: 10px;
   display: flex;
+  margin-bottom: 25px;
+  width: 48% !important;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 49%;

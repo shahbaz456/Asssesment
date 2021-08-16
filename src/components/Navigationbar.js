@@ -89,10 +89,13 @@ const Navigationbar = ({ searchedItem, nosearch, setsaveData }) => {
         <Navbar color="light" light expand="md">
           <div className="wraping">
             <div className="logo">
-              <NavbarBrand className="brand" href="/">
-                <b>Beer Pub</b>
-                <img className="imgg" src={beer} alt="imag"></img>
-              </NavbarBrand>
+              <Link to="/">
+                {" "}
+                <NavbarBrand className="brand">
+                  <b>Beer Pub</b>
+                  <img className="imgg" src={beer} alt="imag"></img>
+                </NavbarBrand>{" "}
+              </Link>
             </div>
 
             <div className="searchcard">{searchrender()}</div>
